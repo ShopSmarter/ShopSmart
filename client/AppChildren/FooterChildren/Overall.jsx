@@ -8,3 +8,4 @@ function Overall() {
     </div>
   )
 }
+export default Overall
