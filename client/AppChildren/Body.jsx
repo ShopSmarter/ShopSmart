@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import Form from './BodyChildren/Form.jsx'
+import Container from './BodyChildren/Container.jsx'
 
 function Body() {
   return (
@@ -8,3 +10,4 @@ function Body() {
     </div>
   )
 }
+export default Body
