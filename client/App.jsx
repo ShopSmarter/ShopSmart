@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 // import { render } from 'react-dom'
 
-//import child components
-import Body from './AppChildren/Body.jsx'
-import Header from './AppChildren/Header.jsx'
-import Footer from './AppChildren/Footer.jsx'
+// import child components
+import Body from './AppChildren/Body.jsx';
+import Header from './AppChildren/Header.jsx';
+import Footer from './AppChildren/Footer.jsx';
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
       <Body />
       <Footer />
     </div>
-  )
+  );
 }
 
 export default App;
