@@ -10,7 +10,9 @@ class Form extends Component {
     super(props)
     this.state = {
       food : ['food'],
+      WholeFoods: false,
       TraderJoes: false,
+      Ralphs: false,
       totalPrice : ['price']
     }
    this.storeClick = this.storeClick.bind(this)
@@ -18,12 +20,16 @@ class Form extends Component {
 
 storeClick(store) { 
   // console.log(this.state.stores[store])
-if (this.state[store]) {
-  this.setState({store : false})
+if (this.state[store] === true) {
+  this.setState({[store] : false})
+  console.log('this', this.state[store])
   // console.log(this.state.stores[store])
   }
-else {
-  this.setState({store : true})
+else if (this.state[store] === false) {
+  this.setState({[store] : true})
+  //when brackets it doesnt change it to true returns false
+  //when dot notation it makes it undefined and then returns true
+  console.log('hi', this.state[store])
   // console.log(this.state.stores[store])
 }
 }
@@ -32,7 +38,7 @@ else {
     return (
       <div>
         <div id="middle" className="TopInput">
-          <input onClick={() => this.storeClick('Whole Foods')} type="image" className="logos"src={logo} alt="WholeFoods"></input>
+          <input onClick={() => this.storeClick('WholeFoods')} type="image" className="logos"src={logo} alt="WholeFoods"></input>
           <input onClick={() => this.storeClick('TraderJoes')} type="image" className="logos"src={logos} alt="Traders"></input>
           <input onClick={() => this.storeClick('Ralphs')} type="image" className="logos"src={logoss} alt="Ralphs"></input>
         </div>
