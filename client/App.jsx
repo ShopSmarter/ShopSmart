@@ -1,22 +1,22 @@
 import React, { Component } from 'react'
-// import { render } from 'react-dom'
+import { render } from 'react-dom'
 import Header from './AppChildren/Header.jsx'
 //import child components
-import Body from './AppChildren/Body.jsx'
-import Footer from './AppChildren/Footer.jsx'
+// import Body from './AppChildren/Body.jsx'
+// import Footer from './AppChildren/BodyChildren/Footer.jsx'
+import styles from '../styles.css'
+import Form from './AppChildren/BodyChildren/Form.jsx'
+import Container from './AppChildren/BodyChildren/Container.jsx'
+import Footer from './AppChildren/BodyChildren/Footer.jsx'
 
-class App extends Component {
-
-render(){
-  return (
+function App() {
+return (
     <div>
-      <h1>test</h1>
-     <Header />
-     <Body />
-     <Footer />
+      <Header />
+      <Form />
+      <Container  />
+      <Footer />
     </div>
   )
 }
-}
-
 export default App
