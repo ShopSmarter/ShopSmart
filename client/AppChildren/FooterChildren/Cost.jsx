@@ -9,3 +9,4 @@ function Cost() {
     </div>
   )
 }
+export default Cost

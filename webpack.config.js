@@ -9,12 +9,12 @@ module.exports = {
     path: path.join(__dirname, '/build'),
     filename: 'bundle.js'
   },
-  mode: process.env.NODE_ENV,
+  mode : process.env.NODE_ENV,
   module: {
     rules: [
       {
         //check for any js/jsx file names
-        test: /\.jsx?/,
+        test: /\.(js|jsx)$/, 
         //exclude node_modules from rule set
         exclude: /node_modules/,
         use: {
@@ -37,20 +37,21 @@ module.exports = {
     ]
   },
   // devtool: 'eval-source-map',
-  // devServer: {
-  //   publicPath: '/build/',
-  //   port: 8080,
-  //   hot: true,
-  //   proxy: [
-  //     {
-  //       context: ['/api'],
-  //       target: 'http://localhost:3005/',
-  //     },
-  //   ],
-  // },
+  devServer: {
+    publicPath: '/build/',
+    port: 8080,
+    hot: true,
+    proxy: [
+      {
+        context: ['/api'],
+        target: 'http://localhost:3005/',
+      },
+    ],
+  },
   // plugins: [
   //   new HtmlWebPackPlugin({
   //     template: './index.html'
   //   })
   // ]
+
 }
