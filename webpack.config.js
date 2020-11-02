@@ -14,7 +14,7 @@ module.exports = {
     rules: [
       {
         //check for any js/jsx file names
-        test: /\.(js|jsx)$/, 
+        test: /\.(js|jsx)$/,
         //exclude node_modules from rule set
         exclude: /node_modules/,
         use: {

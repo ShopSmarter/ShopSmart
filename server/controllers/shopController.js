@@ -9,6 +9,16 @@ shopControllers.getPrice = async (req, res, next) => {
   //   const food = req.body;
   // We'll be getting our search parameters off of req.body once everything is put together. For now,
   // we're using these as placeholders
+
+  db.query('SELECT * FROM price').then((data) => {
+    const result = data.rows[0].price_amount;
+    res.locals.price = result;
+  });
+
+  console.log('You have reached shopControllers');
+
+  console.log('REQ.PARAMS', req.query);
+
   const { store } = req.params;
   const { food } = req.params;
 
@@ -37,6 +47,5 @@ shopControllers.getPrice = async (req, res, next) => {
     return next({ err });
   }
 };
-shopControllers.getPrice();
 
 module.exports = shopControllers;
