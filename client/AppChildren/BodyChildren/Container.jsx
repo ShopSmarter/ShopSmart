@@ -1,38 +1,32 @@
 import React, { Component } from 'react'
+import SubContainer from './subContainer.jsx'
+
 import { render } from 'react-dom'
 
 class Container extends Component {
   constructor(props){
-    super(props)
-  }
+    super(props) 
+  } 
+
   
   render(){
-    console.log(this.props);
+    let markets = [];
+    if(this.props.props.wholeFoodsSelected){
+      markets.push(<SubContainer props={{props: this.props.props, marketName: 'Whole Foods'}} key={'WholeFoods'}/>)
+      // markets.push(<SubContainer props={'Whole Foods'} key={'WholeFoods'}/>)
+    }
+    if(this.props.props.traderJoesSelected){
+      markets.push(<SubContainer props={{props: this.props.props, marketName: 'Trader Joes'}} key={'TraderJoes'}/>)
+    }
+    if(this.props.props.ralphsSelected){
+      markets.push(<SubContainer props={{props: this.props.props, marketName: 'Ralphs'}} key={'Ralphs'}/>)
+    }
     return (
-      <div>
-        <h3 className="shop">Whole Foods</h3>
-          <table className="paper">
-            <tr>
-              <th className="col">Food</th>
-              <th className="col">Prices</th>
-            </tr>
-            <tr>
-              <th className="row">{}</th>
-              <th>{}</th>
-            </tr>
-            <tr>
-              <th className="row">{}</th>
-              <th>{}</th>
-            </tr>
-            <tr>
-              <th className="row">{}</th>
-              <th>{}</th>
-            </tr>
-          </table>
-    </div>
-    )
+      <div className="marketsDisplay">
+        {markets}
+      </div>
+    )   
   }
-  // const [cost, setCost] = useState(0
- 
 }
-export default Container 
+
+export default Container;

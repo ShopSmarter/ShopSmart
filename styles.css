@@ -169,6 +169,12 @@ th[class="row"] {
     background-color: #d7d9f286;
 }
 
+.marketsDisplay{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
 .shop {
   font-family: 'Montserrat', sans-serif;
 }

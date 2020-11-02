@@ -2,13 +2,16 @@ import React, { Component } from 'react'
 import logo from './wholeFoods.png'
 import logos from './traders.png'
 import logoss from './ralphs.png'
+import Footer from './Footer.jsx'
+import Container from './Container.jsx'
 import { render } from 'react-dom'
 
-
+// *******WE'RE SORRY!********
 class Form extends Component {
   constructor(props){
     super(props)
     this.state = {
+      marketNames: ['Whole Foods', 'Trader Joes', 'Ralphs'],
       wholeFoodsSelected: false,
       wholeFoodsSubtotal: 0,
       traderJoesSelected: false,
@@ -45,7 +48,7 @@ else {
 }
 }
 
-
+//captures food input in food key
 onFoodType(e){
   console.log(e);
   this.setState((prevState)=>{
@@ -56,6 +59,7 @@ onFoodType(e){
   });
 }
 
+//pushes captured food key into array of foodsList
 onSubmit(e) { 
   e.preventDefault();
   this.setState((prevState)=>{
@@ -90,6 +94,8 @@ onSubmit(e) {
        </div>
        
         </div>
+        <Container props={this.state} />
+        <Footer props={this.state} />
       </div>
     )
   }
