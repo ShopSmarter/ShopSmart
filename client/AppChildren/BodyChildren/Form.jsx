@@ -76,14 +76,14 @@ class Form extends Component {
         ...prevState,
         food: e.target.value,
       };
-    });
+  
   }
 
   // pushes captured food key into array of foodsList
   onSubmit(e) {
     e.preventDefault();
     this.getPrices(this.state.food);
-    this.setState((prevState) => {
+    this.setState((prevSte) => {
       return {
         ...prevState,
         foodsList: this.state.foodsList.concat(this.state.food),
