@@ -4,19 +4,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
 
+
 .opener {
   font-size: 60px;
   display: flex;
   justify-content: center;
-  margin-top: 300px;
+  margin-top: 60px;
 }
 
 .open {
   display: flex;
   margin-top: 20px;
   justify-content: center;
-  height: 100px;
+  height: 50px;
 }
+
+/* main logo */
+.shopSmartLogo{
+  display: flex;
+  justify-content: center;
+  height: 400px;
+}
+
 .atag {
   text-decoration: none;
   color: black;
@@ -56,7 +65,7 @@
   width: 40px;
   height: 40px;
   /* puts plus in right place */
-  line-height: 36px;
+  line-height: 50%;
   border-radius: 50%;
   border: solid 2px #bcc2cf;
   text-align: center;
@@ -158,15 +167,22 @@ th {
 
 td {
     text-align: center;
+    background-color: #d7d9f286;
+    color:  #2d2f31;
+    text-shadow: none;
+    
 }
 
 th[class="col"] {
     background-color: #696969;
     color: #fff;
+    height: 40px;
 }
 
-th[class="row"] {
+tr[class="row"] {
     background-color: #d7d9f286;
+    color:  #2d2f31;
+
 }
 
 .marketsDisplay{
@@ -243,3 +259,4 @@ text-align: center;
     /* Padding for demo purposes */
     padding: 30px;
 }
+
