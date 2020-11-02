@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import Overall from './FooterChildren/Overall.jsx';
-import Cost from './FooterChildren/Cost.jsx';
 
 class Footer extends Component {
   constructor(props) {
@@ -11,8 +10,7 @@ class Footer extends Component {
   render() {
     return (
       <div className="footing">
-        <Cost />
-        <Overall />
+        <Overall props={this.props.props}/>
       </div>
     );
   }
