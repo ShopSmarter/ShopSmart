@@ -88,28 +88,29 @@ class Form extends Component {
     let ralphs;
     query(this.state.food, 'tj').then((result) => {
       tj = result.data;
-      console.log('result.data', tj);
+      console.log('TJ result.data', tj);
     });
     query(this.state.food, 'wf').then((result) => {
       wf = result.data;
-      console.log('result.data', wf);
+      console.log('WF result.data', wf);
     });
     query(this.state.food, 'ralphs').then((result) => {
       ralphs = result.data;
-      console.log('result.data', ralphs);
+      console.log('RALPHS result.data', ralphs);
     });
     this.setState((prevState) => {
       return {
         ...prevState,
         foodsList: this.state.foodsList.concat(this.state.food),
-        priceList: this.state.priceList.wholeFoods.concat(wf),
-        priceList: this.state.priceList.traderJoes.concat(tj),
-        priceList: this.state.priceList.ralphs.concat(ralphs),
+        // priceList: this.state.priceList.wholeFoods.concat(wf),
+        // priceList.traderJoes: this.state.priceList.traderJoes.concat(tj),
+        // [priceList.ralphs]: this.state.priceList.ralphs.concat(ralphs),
       };
     });
   }
 
   render() {
+    console.log(this.state.priceList.wholeFoods);
     return (
       <div>
         <div id="middle" className="TopInput">
