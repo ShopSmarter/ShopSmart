@@ -4,10 +4,15 @@ import { render } from 'react-dom';
 function Overall(props) {
   const { priceList, traderJoesSelected, wholeFoodsSelected, ralphsSelected } = props.props;
 
+  const checkedPriceList = {};
+  if (traderJoesSelected) checkedPriceList['Trader Joes'] = priceList.traderJoes;
+  if (wholeFoodsSelected) checkedPriceList['Whole Foods'] = priceList.wholeFoods;
+  if (ralphsSelected) checkedPriceList.Ralphs = priceList.ralphs;
+
   // find best average price
   const averages = {};
-  for (const key in priceList) {
-    averages[key] = priceList[key].reduce((a, b) => a + b, 0);
+  for (const key in checkedPriceList) {
+    averages[key] = checkedPriceList[key].reduce((a, b) => a + b, 0);
   }
   const bestAveragePrice = Math.min(...Object.values(averages));
   const bestStore = Object.keys(averages).find((key) => averages[key] === bestAveragePrice);
@@ -32,7 +37,9 @@ function Overall(props) {
       </button>
       <div style={{ display: 'none' }} id="showMeTheMoney">
         <h1>
-          {bestStore} has the best average price of ${bestAveragePrice}
+          {bestStore}
+{' '}
+has the best average price of ${bestAveragePrice}
         </h1>
       </div>
     </div>
