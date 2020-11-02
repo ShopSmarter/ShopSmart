@@ -9,47 +9,86 @@ class Form extends Component {
   constructor(props){
     super(props)
     this.state = {
-      food : ['food'],
-      WholeFoods: false,
-      TraderJoes: false,
-      Ralphs: false,
-      totalPrice : ['price']
+      wholeFoodsSelected: false,
+      wholeFoodsSubtotal: 0,
+      traderJoesSelected: false,
+      traderJoesSubtotal: 0,
+      ralphsSelected: false,
+      ralphsSubtotal: 0,
+      foodsList: [],
+      food: '',
+      maxBudget: 0
     }
    this.storeClick = this.storeClick.bind(this)
+   this.onFoodType = this.onFoodType.bind(this)
+   this.onSubmit = this.onSubmit.bind(this)
   }
 
 storeClick(store) { 
-  // console.log(this.state.stores[store])
-if (this.state[store] === true) {
-  this.setState({[store] : false})
-  console.log('this', this.state[store])
-  // console.log(this.state.stores[store])
-  }
-else if (this.state[store] === false) {
-  this.setState({[store] : true})
-  //when brackets it doesnt change it to true returns false
-  //when dot notation it makes it undefined and then returns true
-  console.log('hi', this.state[store])
-  // console.log(this.state.stores[store])
+if (!this.state[store]) {
+  this.setState((prevState)=>{
+    return{
+      ...prevState,
+      [store] : true
+    }
+  })
+  console.log(this.state)
+}
+else {
+  this.setState((prevState)=>{
+    return{
+      ...prevState,
+      [store] : false
+    }
+  })
+  console.log(this.state)
 }
 }
 
+
+onFoodType(e){
+  console.log(e);
+  this.setState((prevState)=>{
+    return{
+      ...prevState,
+      food: e.target.value
+    }   
+  });
+}
+
+onSubmit(e) { 
+  e.preventDefault();
+  this.setState((prevState)=>{
+    return{
+      ...prevState,
+      foodsList: this.state.foodsList.concat(this.state.food)
+    }   
+  });
+}
+
   render(){
+    console.log(this.state.foodsList)
     return (
       <div>
         <div id="middle" className="TopInput">
-          <input onClick={() => this.storeClick('WholeFoods')} type="image" className="logos"src={logo} alt="WholeFoods"></input>
-          <input onClick={() => this.storeClick('TraderJoes')} type="image" className="logos"src={logos} alt="Traders"></input>
-          <input onClick={() => this.storeClick('Ralphs')} type="image" className="logos"src={logoss} alt="Ralphs"></input>
+          {/* store selection inputs */}
+          <input onClick={() => this.storeClick('wholeFoodsSelected')} type="image" className="logos"src={logo} alt="WholeFoods"></input>
+          <input onClick={() => this.storeClick('traderJoesSelected')} type="image" className="logos"src={logos} alt="Traders"></input>
+          <input onClick={() => this.storeClick('ralphsSelected')} type="image" className="logos"src={logoss} alt="Ralphs"></input>
         </div>
         <div className="BottomInputs">
-        <div id="inputs">
-          <input className="field" type="text" placeholder="Food Item" />
-          <button className="btn" type="submit">+</button>
-        </div>
+        <form onSubmit={this.onSubmit} id="inputs">
+          {/* food search */}
+          <input onChange={this.onFoodType} className="field" type="text" placeholder="Food Item" />
+          {/* click submit button for food */}
+          <input className='btn' type="submit" value='+'/>
+        {/* <button onClick={this.onFoodInput} className="btn" type="submit">+</button> */}
+        </form>
         <div className="budget">
-          <input className="field"type="text" placeholder="Max Budget" />
+          {/* budget input */}
+          <input className="field" type="text" placeholder="Max Budget" />
        </div>
+       
         </div>
       </div>
     )
