@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+const axios = require('axios');
 const apiRouter = require('./routes/api.js');
 
 const app = express();
@@ -30,3 +31,5 @@ app.use('/', (req, res) => {
 app.listen(3005, () => {
   console.log('Listening on 3005');
 });
+
+module.exports = app;

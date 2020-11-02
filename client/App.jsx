@@ -1,20 +1,18 @@
 import React, { Component } from 'react';
-// import { render } from 'react-dom'
-
-// import child components
-import Body from './AppChildren/Body.jsx';
+import { render } from 'react-dom';
 import Header from './AppChildren/Header.jsx';
-import Footer from './AppChildren/Footer.jsx';
+// import child components
+// import Body from './AppChildren/Body.jsx'
+// import Footer from './AppChildren/BodyChildren/Footer.jsx'
+import styles from '../styles.css';
+import Form from './AppChildren/BodyChildren/Form.jsx';
 
 function App() {
   return (
     <div>
-      <h1>Hi React is workign</h1>
       <Header />
-      <Body />
-      <Footer />
+      <Form />
     </div>
   );
 }
-
 export default App;
