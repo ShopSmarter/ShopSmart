@@ -25,9 +25,9 @@ class Form extends Component {
       ralphsSelected: false,
       foodsList: [],
       priceList: {
-        wholeFoods: [1],
-        traderJoes: [1],
-        ralphs: [1],
+        wholeFoods: [],
+        traderJoes: [],
+        ralphs: [],
       },
       wholeFoodsSubtotal: 0,
       traderJoesSubtotal: 0,
@@ -88,29 +88,26 @@ class Form extends Component {
     let ralphs;
     query(this.state.food, 'tj').then((result) => {
       tj = result.data;
-      console.log('TJ result.data', tj);
+      this.state.priceList.traderJoes.push(tj);
     });
     query(this.state.food, 'wf').then((result) => {
       wf = result.data;
-      console.log('WF result.data', wf);
+      this.state.priceList.wholeFoods.push(wf);
     });
     query(this.state.food, 'ralphs').then((result) => {
       ralphs = result.data;
-      console.log('RALPHS result.data', ralphs);
+      this.state.priceList.ralphs.push(ralphs);
     });
+    console.log(this.state.priceList);
     this.setState((prevState) => {
       return {
         ...prevState,
         foodsList: this.state.foodsList.concat(this.state.food),
-        // priceList: this.state.priceList.wholeFoods.concat(wf),
-        // priceList.traderJoes: this.state.priceList.traderJoes.concat(tj),
-        // [priceList.ralphs]: this.state.priceList.ralphs.concat(ralphs),
       };
     });
   }
 
   render() {
-    console.log(this.state.priceList.wholeFoods);
     return (
       <div>
         <div id="middle" className="TopInput">

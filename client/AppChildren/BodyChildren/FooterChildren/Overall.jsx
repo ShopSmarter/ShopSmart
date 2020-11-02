@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 
 function Overall(props) {
-  const { priceList } = props.props;
+  const { priceList, traderJoesSelected, wholeFoodsSelected, ralphsSelected } = props.props;
 
   // find best average price
   const averages = {};
@@ -32,9 +32,7 @@ function Overall(props) {
       </button>
       <div style={{ display: 'none' }} id="showMeTheMoney">
         <h1>
-          {bestStore}
-{' '}
-has the best average price of ${bestAveragePrice}
+          {bestStore} has the best average price of ${bestAveragePrice}
         </h1>
       </div>
     </div>
