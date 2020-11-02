@@ -1,0 +1,245 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+
+.opener {
+  font-size: 60px;
+  display: flex;
+  justify-content: center;
+  margin-top: 300px;
+}
+
+.open {
+  display: flex;
+  margin-top: 20px;
+  justify-content: center;
+  height: 100px;
+}
+.atag {
+  text-decoration: none;
+  color: black;
+
+}
+
+.intro {
+  /* font-size: 60px; */
+  display: flex;
+  justify-content: center;
+  /* margin-top: 300px; */
+}
+
+.gotomiddle {
+  padding:10px;
+  border-radius:10px;
+  width: 130px;
+  margin: 5px;
+  /* padding: 50px; */
+  height: 50px;
+  border:0;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  margin-bottom: 600px;
+}
+.gotomiddle:hover {
+  background-color: grey;
+}
+/* plus button */
+.btn{
+  display: inline-block;
+  background-color: transparent;
+  text-decoration: none;
+  font-size: 30px;
+  color: #bcc2cf;
+  width: 40px;
+  height: 40px;
+  /* puts plus in right place */
+  line-height: 36px;
+  border-radius: 50%;
+  border: solid 2px #bcc2cf;
+  text-align: center;
+  margin-right: 5px;
+  margin-left: 5px;
+  vertical-align: middle;
+  overflow: hidden;
+  font-weight: bold;
+  transition: .4s;
+}
+
+.btn:hover {
+    background: #ffffff transparent;
+    color: black;
+    border: 2px solid black;
+}
+
+body {
+  background-image: linear-gradient(to right, #1c1e20, #2d2f31);
+  text-shadow: 2px 2px #00000079;
+  color: white;
+  margin:50px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+
+/* styling for inputs*/
+input {
+  padding:10px;
+  border-radius:10px;
+  border:0;
+  color: white;
+  /* box-shadow:0 0 15px 4px rgba(0,0,0,0.06); */
+}
+
+.field{
+  background-color: transparent;
+  border: 1px solid white;
+  font-family: 'Montserrat', sans-serif;
+}
+/* lets see button */
+.lets {
+  padding:10px;
+  border-radius:10px;
+  width: 100px;
+  border:0;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+}
+.lets:hover {
+  background-color: grey;
+}
+
+/* header  */
+.header {
+  display: flex;
+  margin-top: 20px;
+  align-items: flex-start;
+  flex-direction: row;
+  justify-content: center;
+  height: 100px;
+}
+
+
+/* input fields */
+.TopInput {
+  display: flex;
+  margin-top: 20px;
+  justify-content: center;  
+}
+
+.check{ 
+  margin-left: 19px;
+}
+
+.BottomInputs {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 25px;
+  margin-bottom: 50px;
+}
+
+#inputs {
+margin-right: 30px;;
+}
+
+.budget {
+margin-left: 30px;
+}
+
+
+/* table  */
+th {
+    border: 1px solid rgb(190, 190, 190);
+    padding: 10px;
+}
+
+td {
+    text-align: center;
+}
+
+th[class="col"] {
+    background-color: #696969;
+    color: #fff;
+}
+
+th[class="row"] {
+    background-color: #d7d9f286;
+}
+
+.marketsDisplay{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.shop {
+  font-family: 'Montserrat', sans-serif;
+}
+
+table {
+    border-collapse: collapse;
+    border: 2px solid rgb(200, 200, 200);
+    letter-spacing: 1px;
+    font-family: 'Montserrat', sans-serif;
+     font-size: .8rem;
+}
+
+/* footer */
+
+.oneShop {
+margin-top: 150px;
+font-size: 15px;
+}
+
+#total {
+  margin-top: 45px;
+  display: flex;
+  justify-content: flex-start;
+  font-family: 'Montserrat', sans-serif;
+}
+
+
+
+.title {
+  font-size: 70px;
+  height: 50px;
+}
+
+.foot {
+  display: block;
+text-align: center;
+
+} 
+
+
+.logos {
+  width:70px;
+  height: 70px;
+}
+
+.logos:active {
+}
+
+
+.paper {
+  background: #fff;
+  /* display: inline-block; */
+  width: 200px;
+  height: 400px;
+  box-shadow:
+    /* The top layer shadow */
+    0 1px 1px rgba(0,0,0,0.15),
+    /* The second layer */
+    0 10px 0 -5px #eee,
+    /* The second layer shadow */
+    0 10px 1px -4px rgba(0,0,0,0.15),
+     /* The third layer */
+    0 20px 0 -10px #eee,
+    /* The third layer shadow */
+    0 20px 1px -9px rgba(0,0,0,0.15);
+    /* Padding for demo purposes */
+    padding: 30px;
+}
