@@ -37,9 +37,7 @@ function Overall(props) {
       </button>
       <div style={{ display: 'none' }} id="showMeTheMoney">
         <h1>
-          {bestStore}
-{' '}
-has the best average price of ${bestAveragePrice}
+          {bestStore} has the best average price of ${bestAveragePrice}
         </h1>
       </div>
     </div>
