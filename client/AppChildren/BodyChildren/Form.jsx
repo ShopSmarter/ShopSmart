@@ -56,6 +56,7 @@ class Form extends Component {
       });
   }
 
+  //tracks user click of store to display store "card"
   storeClick(store) {
     if (!this.state[store]) {
       this.setState((prevState) => {

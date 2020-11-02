@@ -10,7 +10,7 @@ let averages = {}
 for(let key in priceList){
   averages[key] = priceList[key].reduce((a,b)=> a+b, 0)
 }
-let bestAveragePrice = Math.max(...Object.values(averages))
+let bestAveragePrice = Math.min(...Object.values(averages))
 const bestStore = Object.keys(averages).find(key => averages[key] === bestAveragePrice);
 
 //show best average price
