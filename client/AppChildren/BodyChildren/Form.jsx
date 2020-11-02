@@ -76,7 +76,7 @@ class Form extends Component {
         ...prevState,
         food: e.target.value,
       };
-  
+    });
   }
 
   // pushes captured food key into array of foodsList
