@@ -24,16 +24,17 @@ class Form extends Component {
       traderJoesSelected: false,
       ralphsSelected: false,
       foodsList: [],
-      priceList: {
-        wholeFoods: [],
-        traderJoes: [],
-        ralphs: [],
-      },
+      wholeFoodsList: [],
+      traderJoesList: [],
+      ralphsList: [],
       wholeFoodsSubtotal: 0,
       traderJoesSubtotal: 0,
       ralphsSubtotal: 0,
       food: '',
       maxBudget: 0,
+      wholeFoodsData: '',
+      traderJoesData: '',
+      ralphsData: '',
     };
     this.storeClick = this.storeClick.bind(this);
     this.onFoodInput = this.onFoodInput.bind(this);
@@ -86,25 +87,34 @@ class Form extends Component {
     let tj;
     let wf;
     let ralphs;
-    query(this.state.food, 'tj').then((result) => {
-      tj = result.data;
-      this.state.priceList.traderJoes.push(tj);
-    });
-    query(this.state.food, 'wf').then((result) => {
-      wf = result.data;
-      this.state.priceList.wholeFoods.push(wf);
-    });
-    query(this.state.food, 'ralphs').then((result) => {
-      ralphs = result.data;
-      this.state.priceList.ralphs.push(ralphs);
-    });
-    console.log(this.state.priceList);
-    this.setState((prevState) => {
-      return {
-        ...prevState,
-        foodsList: this.state.foodsList.concat(this.state.food),
-      };
-    });
+    query(this.state.food, 'tj')
+      .then((result) => {
+        tj = result.data;
+        // this.state.traderJoesList.push(tj);
+      })
+      .then(() => {
+        query(this.state.food, 'wf').then((result) => {
+          this.state.wholeFoodsData = result.data;
+          console.log('result.data', result.data);
+        });
+      })
+      .then(() => {
+        query(this.state.food, 'ralphs').then((result) => {
+          ralphs = result.data;
+          // this.state.ralphsList.push(ralphs);
+        });
+      })
+      .then(() => {
+        console.log(this.state);
+        this.setState((prevState) => {
+          return {
+            ...prevState,
+            foodsList: this.state.foodsList.concat(this.state.food),
+            wholeFoodsList: [...this.state.wholeFoodsList, this.state.wholeFoodsData],
+            // wholeFoodsList: this.state.wholeFoodsList.concat(wf),
+          };
+        });
+      });
   }
 
   render() {
