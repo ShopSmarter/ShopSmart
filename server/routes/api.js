@@ -3,6 +3,9 @@ const express = require('express');
 const router = express.Router();
 const shopControllers = require('../controllers/shopController');
 
+// This router handles our axios fetch requests to get prices and sends them back to the
+// front end.
+
 router.use('/', shopControllers.getPrice, async (req, res) => {
   try {
     console.log('trying', res.locals.price);
