@@ -4,18 +4,23 @@ import { render } from 'react-dom';
 
 function SubContainer(props) {
   const storeName = props.props.marketName;
-  // const storeSubtotal = props.props.priceList.reduce((a, b) => a + b, 0);
+  const { maxBudget } = props.props.props;
   const { foodsList } = props.props.props;
   const { priceList } = props.props;
+  const storeSubtotal = priceList.reduce((a, b) => a + b, 0);
 
-  console.log('subContainer List', priceList);
+  console.log('budget', maxBudget);
 
   const foodRows = [];
   foodsList.forEach((food, index) => {
     foodRows.push(
       <tr className="row" key={index}>
-        <td className="row">{food}</td>
-        <td className="row">{priceList[index]}</td>
+        <td className="row" id="foodBox">
+          {food}
+        </td>
+        <td className="row" id="priceBox">
+          {priceList[index]}
+        </td>
       </tr>
     );
   });
@@ -32,9 +37,14 @@ function SubContainer(props) {
           {foodRows}
         </tbody>
       </table>
-      <h3>
-        Total Cost: $
-{/* {storeSubtotal} */}
+
+      <h3
+        style={{ color: storeSubtotal > maxBudget && maxBudget > 0 ? 'red' : 'white' }}
+        id="total"
+      >
+        Total Cost: $ 
+{' '}
+{storeSubtotal}
       </h3>
     </div>
   );

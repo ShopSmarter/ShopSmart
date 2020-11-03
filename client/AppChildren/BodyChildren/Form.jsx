@@ -69,6 +69,7 @@ class Form extends Component {
         food: e.target.value,
       };
     });
+    console.log('State.food', this.state.food);
   }
 
   // captures food input in food key
@@ -84,37 +85,30 @@ class Form extends Component {
   // pushes captured food key into array of foodsList
   onSubmit(e) {
     e.preventDefault();
-    let tj;
-    let wf;
-    let ralphs;
-    query(this.state.food, 'tj')
-      .then((result) => {
-        tj = result.data;
-        // this.state.traderJoesList.push(tj);
-      })
-      .then(() => {
-        query(this.state.food, 'wf').then((result) => {
-          this.state.wholeFoodsData = result.data;
-          console.log('result.data', result.data);
-        });
-      })
-      .then(() => {
-        query(this.state.food, 'ralphs').then((result) => {
-          ralphs = result.data;
-          // this.state.ralphsList.push(ralphs);
-        });
-      })
-      .then(() => {
-        console.log(this.state);
-        this.setState((prevState) => {
-          return {
-            ...prevState,
-            foodsList: this.state.foodsList.concat(this.state.food),
-            wholeFoodsList: [...this.state.wholeFoodsList, this.state.wholeFoodsData],
-            // wholeFoodsList: this.state.wholeFoodsList.concat(wf),
-          };
-        });
+    const newFoodsList = [...this.state.foodsList, this.state.food];
+    const newWholeFoodsList = [...this.state.wholeFoodsList];
+    const newRalphsList = [...this.state.ralphsList];
+    const newTraderJoesList = [...this.state.traderJoesList];
+
+    query(this.state.food, 'tj').then((result) => {
+      newTraderJoesList.push(result.data);
+      this.setState({
+        foodsList: newFoodsList,
+        traderJoesList: newTraderJoesList,
       });
+    });
+    query(this.state.food, 'wf').then((result) => {
+      newWholeFoodsList.push(result.data);
+      this.setState({
+        wholeFoodsList: newWholeFoodsList,
+      });
+    });
+    query(this.state.food, 'ralphs').then((result) => {
+      newRalphsList.push(result.data);
+      this.setState({
+        ralphsList: newRalphsList,
+      });
+    });
   }
 
   render() {
