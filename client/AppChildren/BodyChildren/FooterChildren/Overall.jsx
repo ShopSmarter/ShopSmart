@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 
 function Overall(props) {
+  // These are all the props we need. I know, prop drilling is bad for the environment.
   const {
     traderJoesList,
     ralphsList,
@@ -10,6 +11,10 @@ function Overall(props) {
     wholeFoodsSelected,
     ralphsSelected,
   } = props.props;
+
+  // This makes sure the only average prices being compared are those that have been selected.
+  // The bracket notation is used because the words are rendered directly on the page and thus
+  // need to be formated correctly as two words.
 
   const checkedPriceList = {};
   if (traderJoesSelected) checkedPriceList['Trader Joes'] = traderJoesList;
@@ -24,7 +29,7 @@ function Overall(props) {
   const bestAveragePrice = Math.min(...Object.values(averages));
   const bestStore = Object.keys(averages).find((key) => averages[key] === bestAveragePrice);
 
-  // show best average price
+  // Toggle between showing and not showing the the best price.
 
   function showMeTheMoney() {
     const x = document.getElementById('showMeTheMoney');

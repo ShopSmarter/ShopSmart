@@ -8,9 +8,6 @@ const app = express();
 
 app.use(bodyParser.json());
 
-// We shoudn't need this since our routers should only be getting strings but keeping it here just in case:
-// app.use(bodyParser.urlencoded({ extended: true }));
-
 if (process.env.NODE_ENV === 'production') {
   app.use('/build', express.static(path.join(__dirname, '../build')));
 }

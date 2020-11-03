@@ -4,17 +4,10 @@ const db = require('../modules/shopModel');
 const shopControllers = {};
 
 // This will pull the price from database when user types in food
-// REMINDER: Make sure frontend sends food name thru req.body
 
 shopControllers.getPrice = async (req, res, next) => {
-  //   const food = req.body;
   // We'll be getting our search parameters off of req.body once everything is put together. For now,
   // we're using these as placeholders
-
-  // db.query('SELECT * FROM price').then((data) => {
-  //   const result = data.rows[0].price_amount;
-  //   res.locals.price = result;
-  // });
 
   const { store } = req.query;
   const { food } = req.query;
