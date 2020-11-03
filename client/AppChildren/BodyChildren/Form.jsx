@@ -23,40 +23,26 @@ class Form extends Component {
       wholeFoodsSelected: false,
       traderJoesSelected: false,
       ralphsSelected: false,
-      foodsList: ['apple', 'orange', 'pear'],
-      priceList: {
-        wholeFoods: [1,1,1],
-        traderJoes: [2,2,2],
-        ralphs: [3,3,3],
-      },
+      foodsList: [],
+      wholeFoodsList: [],
+      traderJoesList: [],
+      ralphsList: [],
       wholeFoodsSubtotal: 0,
       traderJoesSubtotal: 0,
       ralphsSubtotal: 0,
       food: '',
       maxBudget: 0,
+      wholeFoodsData: '',
+      traderJoesData: '',
+      ralphsData: '',
     };
     this.storeClick = this.storeClick.bind(this);
     this.onFoodInput = this.onFoodInput.bind(this);
     this.onBudgetInput = this.onBudgetInput.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-    this.getPrices = this.getPrices.bind(this);
   }
 
-  getPrices(foodName) {
-    const promiseArray = [];
-    if (this.state.traderJoesSelected) promiseArray.push(query(foodName, 'tj'));
-    if (this.state.ralphsSelected) promiseArray.push(query(foodName, 'ralphs'));
-    if (this.state.wholeFoodsSelected) promiseArray.push(query(foodName, 'wf'));
-    Promise.all(promiseArray)
-      .then((results) => {
-        console.log('Results', results);
-      })
-      .catch((error) => {
-        console.log('Error', error);
-      });
-  }
-
-  //tracks user click of store to display store "card"
+  // tracks user click of store to display store "card"
   storeClick(store) {
     if (!this.state[store]) {
       this.setState((prevState) => {
@@ -82,33 +68,50 @@ class Form extends Component {
         ...prevState,
         food: e.target.value,
       };
-    })
+    });
+    console.log('State.food', this.state.food);
   }
 
-    // captures food input in food key
-    onBudgetInput(e) {
-      this.setState((prevState) => {
-        return {
-          ...prevState,
-          maxBudget: e.target.value,
-        };
-      })
-    }
-
-  // pushes captured food key into array of foodsList
-  onSubmit(e) {
-    e.preventDefault();
-    this.getPrices(this.state.food);
+  // captures food input in food key
+  onBudgetInput(e) {
     this.setState((prevState) => {
       return {
         ...prevState,
-        foodsList: this.state.foodsList.concat(this.state.food),
+        maxBudget: e.target.value,
       };
     });
   }
 
+  // pushes captured food key into array of foodsList
+  onSubmit(e) {
+    e.preventDefault();
+    const newFoodsList = [...this.state.foodsList, this.state.food];
+    const newWholeFoodsList = [...this.state.wholeFoodsList];
+    const newRalphsList = [...this.state.ralphsList];
+    const newTraderJoesList = [...this.state.traderJoesList];
+
+    query(this.state.food, 'tj').then((result) => {
+      newTraderJoesList.push(result.data);
+      this.setState({
+        foodsList: newFoodsList,
+        traderJoesList: newTraderJoesList,
+      });
+    });
+    query(this.state.food, 'wf').then((result) => {
+      newWholeFoodsList.push(result.data);
+      this.setState({
+        wholeFoodsList: newWholeFoodsList,
+      });
+    });
+    query(this.state.food, 'ralphs').then((result) => {
+      newRalphsList.push(result.data);
+      this.setState({
+        ralphsList: newRalphsList,
+      });
+    });
+  }
+
   render() {
-    // console.log(this.state.foodsList);
     return (
       <div>
         <div id="middle" className="TopInput">
@@ -150,11 +153,11 @@ class Form extends Component {
           </form>
           <div className="budget">
             {/* budget input */}
-            <input 
-            onChange={this.onBudgetInput}
-            className="field" 
-            type="text" 
-            placeholder="Max Budget" 
+            <input
+              onChange={this.onBudgetInput}
+              className="field"
+              type="text"
+              placeholder="Max Budget"
             />
           </div>
         </div>

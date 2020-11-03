@@ -1,3 +1,4 @@
+const { findDOMNode } = require('react-dom');
 const db = require('../modules/shopModel');
 
 const shopControllers = {};
@@ -10,17 +11,13 @@ shopControllers.getPrice = async (req, res, next) => {
   // We'll be getting our search parameters off of req.body once everything is put together. For now,
   // we're using these as placeholders
 
-  db.query('SELECT * FROM price').then((data) => {
-    const result = data.rows[0].price_amount;
-    res.locals.price = result;
-  });
+  // db.query('SELECT * FROM price').then((data) => {
+  //   const result = data.rows[0].price_amount;
+  //   res.locals.price = result;
+  // });
 
-  console.log('You have reached shopControllers');
-
-  console.log('REQ.PARAMS', req.query);
-
-  const { store } = req.params;
-  const { food } = req.params;
+  const { store } = req.query;
+  const { food } = req.query;
 
   // This text string contains our query. It joins our three tables - food, price and whichever store we're looking at
   // and returns the price. The bling operator is used to pass in variables for our parameterized query, which are defined in our

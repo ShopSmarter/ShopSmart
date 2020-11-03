@@ -1,42 +1,55 @@
-import React, { Component } from 'react'
-import { render } from 'react-dom'
+import React, { Component } from 'react';
+import { render } from 'react-dom';
 
 function Overall(props) {
-  const priceList = props.props.priceList;
-  console.log(props.props.priceList)
+  const {
+    traderJoesList,
+    ralphsList,
+    wholeFoodsList,
+    traderJoesSelected,
+    wholeFoodsSelected,
+    ralphsSelected,
+  } = props.props;
 
-//find best average price
-let averages = {}
-for(let key in priceList){
-  averages[key] = priceList[key].reduce((a,b)=> a+b, 0)
-}
-let bestAveragePrice = Math.min(...Object.values(averages))
-const bestStore = Object.keys(averages).find(key => averages[key] === bestAveragePrice);
+  const checkedPriceList = {};
+  if (traderJoesSelected) checkedPriceList['Trader Joes'] = traderJoesList;
+  if (wholeFoodsSelected) checkedPriceList['Whole Foods'] = wholeFoodsList;
+  if (ralphsSelected) checkedPriceList.Ralphs = ralphsList;
 
-//show best average price
-
-function showMeTheMoney() {
-  let x = document.getElementById("showMeTheMoney");
-  if(x.style.display==="none"){
-    x.style.display = ""
+  // find best average price
+  const averages = {};
+  for (const key in checkedPriceList) {
+    averages[key] = checkedPriceList[key].reduce((a, b) => a + b, 0);
   }
-  else{
-    x.style.display = "none"
-  }
-}
+  const bestAveragePrice = Math.min(...Object.values(averages));
+  const bestStore = Object.keys(averages).find((key) => averages[key] === bestAveragePrice);
 
-  console.log(priceList)
-    return (
-      <div className="foot">
-        <div className="inline">
+  // show best average price
+
+  function showMeTheMoney() {
+    const x = document.getElementById('showMeTheMoney');
+    if (x.style.display === 'none') {
+      x.style.display = '';
+    } else {
+      x.style.display = 'none';
+    }
+  }
+  return (
+    <div className="foot">
+      <div className="inline">
         <h3 className="oneShop">Only Have Time For One Trip? See Which Store is Cheapest</h3>
-        </div>
-        <button onClick={showMeTheMoney} className="lets" type="submit">Let me see!</button>
-        <div style={{display: "none"}} id="showMeTheMoney">
-          <h1>{bestStore} has the best average price of ${bestAveragePrice}</h1>
-        </div>
       </div>
-    )
-  
+      <button onClick={showMeTheMoney} className="lets" type="submit">
+        Let me see!
+      </button>
+      <div style={{ display: 'none' }} id="showMeTheMoney">
+        <h1>
+          {bestStore}
+{' '}
+has the best average price of ${bestAveragePrice}
+        </h1>
+      </div>
+    </div>
+  );
 }
-export default Overall
+export default Overall;
