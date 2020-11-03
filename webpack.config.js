@@ -1,5 +1,4 @@
 const path = require('path');
-const HtmlWebPackPlugin = require('html-webpack-plugin');
 
 module.exports = {
    //starting point from which all dependencies are collected
@@ -48,10 +47,4 @@ module.exports = {
       },
     ],
   },
-  // plugins: [
-  //   new HtmlWebPackPlugin({
-  //     template: './index.html'
-  //   })
-  // ]
-
 }
