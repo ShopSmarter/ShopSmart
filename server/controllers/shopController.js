@@ -1,5 +1,6 @@
 const { findDOMNode } = require('react-dom');
-const db = require('../modules/shopModel');
+const { Shop } = require('../modules/shopModel');
+const mongoose = require('mongoose');
 
 const shopControllers = {};
 
@@ -22,20 +23,54 @@ shopControllers.getPrice = async (req, res, next) => {
   // for table or column names so we're using template literals for those instead.
 
   const values = [food];
-  const text = `SELECT price_amount FROM price JOIN ${store} ON ${store}.price_id=price.price_id JOIN food ON ${store}.food_id=food.food_id WHERE food_name = $1`;
+  const query = {shopName: "WholeFoods"};
 
+  // Film.find({ _id: FILM_ID }, (err, data) => {
+  //   //console.log(data);
+  //   res.locals.currFilm = data[0];
+  //   next();
+  
   // Here we run our query. The returned value should be an array containing an object with the key of price_amount and the value of
   // an integer. We convert it into a number with two decimals because all prices are being stored as integers (ie 299 rather than 2.99).
+  // try {
+  //   await db.query(text, values).then((data) => {
+  //     const result = data.rows[0].price_amount / 100;
+  //     res.locals.price = result;
+  //   });
+
+  //   return next();
+  // } catch (err) {
+  //   return next({ err });
+  // }
+
   try {
-    await db.query(text, values).then((data) => {
-      const result = data.rows[0].price_amount / 100;
+    await Shop.findOne(query).then((data) => {
+      console.log(data);
+      const result = data;
       res.locals.price = result;
     });
 
+    console.log(response);
     return next();
   } catch (err) {
     return next({ err });
   }
-};
+//   db.find({})
+//     .then((data) => {
+//       console.log(data[0]);
+//       const result = data;
+//       res.locals.price = result;
+//     })
+//     .catch((err) => {if (err) console.log(err)})
+
+//     console.log(response);
+//     return next();
+  
+// };
+
+
+//get Price for 
+
+}
 
 module.exports = shopControllers;
