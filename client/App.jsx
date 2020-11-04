@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import { render } from 'react-dom';
+import React from 'react';
 import Header from './AppChildren/Header.jsx';
 // import child components
 // import Body from './AppChildren/Body.jsx'

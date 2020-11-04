@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { render } from 'react-dom';
 import axios from 'axios';
 import logo from './wholeFoods.png';
 import logos from './traders.png';
@@ -9,14 +8,34 @@ import Container from './Container.jsx';
 
 /* Query request to retrieve prices based on inputted food */
 
-const query = (foodName, storeName) => {
-  return axios.get('/api/', {
-    params: {
+// const query = (foodName, storeName) => {
+//   return axios.get('/api/', {
+//     params: {
+//       store: storeName,
+//       food: foodName,
+//     },
+//   });
+// };
+
+// fetch
+const query = () => {
+  let data = null;
+  fetch('/api/', {
+    method: 'GET',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
       store: storeName,
-      food: foodName,
-    },
-  });
-};
+      food: foodName, 
+    })
+  })
+  .then((res) => res.json()) //test if we can combine both .thens.
+  .then((response) => {data = response})
+  .catch((err) => {
+    if (err) {
+      console.error(err);
+    }
+  })
+}
 
 class Form extends Component {
   constructor(props) {
