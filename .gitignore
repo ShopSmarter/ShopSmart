@@ -1,1 +1,7 @@
+#ignored files
+
+#npm package
 node_modules
+
+#env files
+env
