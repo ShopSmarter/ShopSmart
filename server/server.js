@@ -16,7 +16,7 @@ app.use('/api', apiRouter);
 
 // test if server is working
 app.get('/', (req, res) => {
-  res.send('Yeti Crabs alive on 3005');
+  res.send('Stab-rabbits alive on 3000');
 });
 
 // global error handler
@@ -25,8 +25,8 @@ app.use('/', (req, res) => {
 });
 
 // server start
-app.listen(3005, () => {
-  console.log('Listening on 3005');
+app.listen(3000, () => {
+  console.log('Listening on 3000');
 });
 
 module.exports = app;
