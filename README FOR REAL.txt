@@ -16,12 +16,7 @@ store : {
 } 
 
 2. Query and DB Restructuring
-Right now our tables are structured to have a table of food, connected to several different
-store tables, which each connect back to a price table. We initially did this to try to
-be dry with our data but in hindsight it isn't scalable as each price requires a separate
-query, which isn't practical once you have more than a couple stores. If we were to do it
-over, we'd probably experiment with giving each food its own table so that a single query
-can return a price for every store.
+Right now our tables are structured to have a table of food, connected to several different store tables, which each connect back to a price table. We initially did this to try to be dry with our data but in hindsight it isn't scalable as each price requires a separate query, which isn't practical once you have more than a couple stores. If we were to do it over, we'd probably experiment with giving each food its own table so that a single query can return a price for every store.
 
 3. Store Data
 We just used dummy data for our testing and presentation. It would've been awesome to find
